@@ -1,0 +1,183 @@
+/* All colours live in CSS variables, so the dark theme only has to
+   redefine the same variables inside body.dark. */
+:root {
+  --bg: #f3f5f7;
+  --text: #243447;
+  --muted: #5b6b7c;
+  --card: #ffffff;
+  --border: #d9e0e7;
+  --field-bg: #ffffff;
+  --field-border: #8999a8;
+  --accent: #24527a;
+  --button-bg: #24527a;
+  --button-text: #ffffff;
+  --button-bg-hover: #173b5c;
+  --warning: #e07b00; /* orange text for the "over 180" state */
+  --over: #c62828; /* red text for the "over 200" state */
+}
+
+body.dark {
+  --bg: #10202e;
+  --text: #e8eef3;
+  --muted: #a7b6c4;
+  --card: #1a2c3b;
+  --border: #33495c;
+  --field-bg: #12212e;
+  --field-border: #4c6579;
+  --accent: #7fb2e5;
+  --button-bg: #2f6fa8;
+  --button-text: #ffffff;
+  --button-bg-hover: #4a8ac4;
+  --warning: #ffb066;
+  --over: #ff8a80;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+header {
+  background-color: var(--card);
+  border-bottom: 1px solid var(--border);
+  padding: 1.5rem 1rem;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: var(--accent);
+}
+
+header p {
+  margin: 0.25rem 0 0;
+  color: var(--muted);
+}
+
+main {
+  width: calc(100% - 2rem);
+  max-width: 700px;
+  margin: 2rem auto;
+}
+
+section {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(16, 32, 46, 0.08);
+}
+
+label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+
+textarea {
+  width: 100%;
+  padding: 0.75rem;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--text);
+  background-color: var(--field-bg);
+  border: 1px solid var(--field-border);
+  border-radius: 4px;
+  resize: vertical;
+}
+
+textarea:focus {
+  outline: 3px solid rgba(36, 82, 122, 0.25);
+  border-color: var(--accent);
+}
+
+#char-count,
+#word-count {
+  margin: 0.75rem 0 0;
+  color: var(--muted);
+}
+
+/* Character counter states added by script.js */
+.warning {
+  color: var(--warning);
+  font-weight: 400;
+}
+
+.over {
+  color: var(--over);
+  font-weight: 700;
+}
+
+.actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+button {
+  padding: 0.6rem 1.1rem;
+  font: inherit;
+  font-weight: 700;
+  color: var(--button-text);
+  background-color: var(--button-bg);
+  border: 1px solid var(--button-bg);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+button:hover,
+button:focus-visible {
+  background-color: var(--button-bg-hover);
+  border-color: var(--button-bg-hover);
+  transform: translateY(-2px);
+}
+
+.hint {
+  margin: 1rem 0 0;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+footer {
+  padding: 1rem;
+  text-align: center;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 600px) {
+  header {
+    padding: 1rem 0.75rem;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  main {
+    margin: 1rem auto;
+  }
+
+  section {
+    padding: 1rem;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  button {
+    width: 100%;
+  }
+}
